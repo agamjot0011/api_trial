@@ -1,7 +1,13 @@
-from fastapi import FastAPI 
+from flask import Flask
 
-app = FastAPI() 
+app = Flask(__name__)
 
-@app.get("/") 
-def home(): 
-    return {"message":"Hello World"} 
+@app.route("/", methods=["GET"])
+def home():
+    return {
+        "success": True,
+        "message": "Hello from Flask API"
+    }
+
+if __name__ == "__main__":
+    app.run(debug=True)
